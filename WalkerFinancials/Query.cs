@@ -46,6 +46,22 @@ namespace WalkerFinancials
             }
         }
 
+        public static void AddToMonthlyBudget(MySqlConnection conn, int bMo, int bYr, string cat, decimal bAmt)
+        {
+            //Create insert command string
+            DateTime bDate = new DateTime(bYr, bMo, 1);
+            string sDate = bDate.ToString("yyyy-MM-dd");
+            int catNum = GetCatNumber(conn, cat);
+            string qry = $"insert into monthly_budget(b_month, b_Category, b_Amount) values('{sDate}', {catNum}, {bAmt})";
+
+            //Prep MySQL command and insert into budget
+            MySqlCommand cmd = new MySqlCommand(qry, conn);
+            cmd.ExecuteNonQuery();
+
+            //At end of method, dispose of MySQL objects
+            cmd.Dispose();
+        }
+
         //AddNewTransaction inserts a new record into the Cash_Flows table of WFdb
         public static void AddNewTransaction(MySqlConnection conn, DateTime dateTrans, decimal amountTrans, string category, string details)
         {
