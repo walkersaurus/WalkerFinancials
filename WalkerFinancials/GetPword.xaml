@@ -1,0 +1,20 @@
+﻿<Window x:Class="WalkerFinancials.GetPword"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:WalkerFinancials"
+        mc:Ignorable="d"
+        Title="Enter Password" Height="100" Width="200"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".5*"/>
+            <RowDefinition Height=".5*"/>
+        </Grid.RowDefinitions>
+        <PasswordBox x:Name="pWord" PasswordChar="*" Focusable="True" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Height="20" Grid.Row="0"/>
+        <Button Content="OK" IsDefault="True" Grid.Row="1" HorizontalAlignment="Left" Width="60" Height="20" Margin="20,0,0,0" Click="SetPassword"/>
+        <Button Content="Cancel" IsCancel="True" Grid.Row="1" HorizontalAlignment="Right" Width="60" Height="20" Margin="0,0,20,0" Click="YouShallNotPass" />
+    </Grid>
+</Window>
