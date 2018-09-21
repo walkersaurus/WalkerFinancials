@@ -63,14 +63,13 @@ namespace WalkerFinancials
 
             //Validate and localize inputs: amount, category, transDate, & details
             double amount = Math.Round(Convert.ToDouble(tAmt.Text), 2);
-            int tNum = Query.GetLastTransNumber(conn);
             int catID = Query.GetCatNumber(conn, tCat.Text);
             DateTime tDate = (DateTime)pDate.SelectedDate;
             string strDate = tDate.Year.ToString() + "-" + tDate.Month.ToString() + "-" + tDate.Day.ToString();
             string det = tDet.Text;
 
             //Upload new transaction record to db
-            Query.UploadNewTransaction(conn, tNum, amount, catID, det, strDate);
+            Query.UploadNewTransaction(conn, amount, catID, det, strDate);
 
             //Refresh HUD? Not sure 
             

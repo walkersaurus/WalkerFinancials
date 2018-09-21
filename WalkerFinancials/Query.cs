@@ -314,15 +314,11 @@ namespace WalkerFinancials
             return catID;
         }
 
-        public static void UploadNewTransaction(MySqlConnection conn, int tNum, double amt, int catID, string det, string strDate)
+        public static void UploadNewTransaction(MySqlConnection conn, double amt, int catID, string det, string strDate)
         {
             string qry =
-                            "insert into cash_flows " +
-                            "Values( " +
-                                $"{tNum}, {amt}, " +
-                                //Replace the next part with catID integer
-                                $"{catID}, " +
-                                $"'{det}', '{strDate}')";
+                            "insert into cash_flows (t_Amount, t_Category, t_details, t_date) " +
+                            $"Values( {amt}, {catID}, '{det}', '{strDate}')";
 
             //MessageBox.Show(qry);
 
