@@ -316,18 +316,23 @@ namespace WalkerFinancials
 
         public static void UploadNewTransaction(MySqlConnection conn, double amt, int catID, string det, string strDate)
         {
-            string qry =
-                            "insert into cash_flows (t_Amount, t_Category, t_details, t_date) " +
-                            $"Values( {amt}, {catID}, '{det}', '{strDate}')";
+            try
+            {
+                string qry = $"insert into cash_flows (t_Amount, t_Category, t_details, t_date) Values( {amt}, {catID}, '{det}', '{strDate}')";
 
-            //MessageBox.Show(qry);
+                //MessageBox.Show(qry);
 
-            MySqlCommand cmd = new MySqlCommand(qry, conn);
-            cmd.Prepare();
-            int affRow = cmd.ExecuteNonQuery();
-            //MessageBox.Show(Convert.ToString(affRow) + "Added");
+                MySqlCommand cmd = new MySqlCommand(qry, conn);
+                cmd.Prepare();
+                int affRow = cmd.ExecuteNonQuery();
+                //MessageBox.Show(Convert.ToString(affRow) + "Added");
 
-            cmd.Dispose();
+                cmd.Dispose();
+            }
+            catch(Exception eX)
+            {
+                MessageBox.Show(eX.ToString());
+            }
         }
 
         public static decimal GetMonthlyIncome(MySqlConnection conn, int bMo, int bYr)
